@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1920px;
+    height: 1080px;
+    background-color: #F8F9FA;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 70px 115px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .tag-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pill {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #6B7280;
+    text-transform: uppercase;
+  }
+  .arrow-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #6B7280;
+  }
+  .meta-right {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #6B7280;
+    text-transform: uppercase;
+  }
+  .title-area {
+    margin-bottom: 40px;
+  }
+  .main-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .main-subtitle {
+    font-size: 17px;
+    color: #6B7280;
+    line-height: 1.4;
+    max-width: 1400px;
+  }
+  
+  /* Cards */
+  .card {
+    border-radius: 20px;
+    padding: 32px 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  }
+  .card.dark {
+    background: #181818;
+    border: 1px solid #2E2E2E;
+    color: #FFFFFF;
+  }
+  .card.sage {
+    background: #E2EAE5;
+    border: 1px solid #CDDAD2;
+    color: #111827;
+  }
+  .card.slate {
+    background: #EEF0F2;
+    border: 1px solid #DCE0E4;
+    color: #111827;
+  }
+  .card.white {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    color: #111827;
+  }
+  .card-badge {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+  .card-title {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    line-height: 1.25;
+  }
+  .card-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .card-list li {
+    font-size: 14.5px;
+    line-height: 1.45;
+    position: relative;
+    padding-left: 18px;
+  }
+  .card-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    opacity: 0.6;
+  }
+  .lead-bold {
+    font-weight: 700;
+  }
+
+  /* Layouts */
+  .layout-cover {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.05fr;
+    gap: 24px;
+    height: 520px;
+  }
+  .layout-col3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.05fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-col2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    height: 680px;
+  }
+  .layout-grid4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-grid4_vert {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    height: 680px;
+  }
+  .layout-credits {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.9fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.05fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-dashboard .hero-card {
+    grid-row: span 2;
+  }
+  .layout-dashboard .audit-card {
+    grid-row: span 2;
+  }
+
+  /* Metrics Layout */
+  .metrics-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 680px;
+  }
+  .metrics-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    height: 260px;
+  }
+  .metrics-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    height: 390px;
+  }
+  .metric-card {
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .metric-num {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .metric-label {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .metric-sub {
+    font-size: 13.5px;
+    line-height: 1.4;
+    opacity: 0.8;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="tag-group">
+      <div class="pill">04 • PRIMARY RESEARCH</div>
+      <div class="arrow-circle">↘</div>
+    </div>
+    <div class="meta-right">UEDP-5 • SEMESTER 7 • PROF. KRITI KUSUM</div>
+  </div>
+
+  <div class="title-area">
+    <div class="main-title">Research Methodology & Pilot Dataset Synthesis</div>
+    <div class="main-subtitle">Transparent documentation of primary research instruments, interview protocol, and exploratory pilot data.</div>
+  </div>
+  <div class="metrics-container">
+    <div class="metrics-top">
+    <div class="card white ">
+      <div class="card-badge">PRIMARY METHODOLOGY</div>
+      <div class="card-title">Research Instruments & Protocol</div>
+      <ul class="card-list">
+        <li><span class="lead-bold">Quantitative Google Form:</span> 15 structured questions covering storage habits, privacy barriers, retrieval difficulty, and custodian preferences.</li>
+        <li><span class="lead-bold">Cross-Generational Protocol:</span> 6 targeted interview angles: Student (15y), College (22y), Business (36y), Doctor (47y), Academic (52y), Senior (75y).</li>
+      </ul>
+    </div>
+    <div class="card dark ">
+      <div class="card-badge">RESEARCH TRANSPARENCY</div>
+      <div class="card-title">Academic Integrity Disclosure</div>
+      <ul class="card-list">
+        <li><span class="lead-bold">Pilot Model Disclosure:</span> The quantitative metrics below reflect the structured exploratory pilot model (n=100) established for pattern analysis.</li>
+        <li><span class="lead-bold">Academic Honesty:</span> Pilot data guides hypothesis generation; verified separate from live testing protocols.</li>
+      </ul>
+    </div>
+
+    </div>
+    <div class="metrics-bottom">
+
+      <div class="card sage metric-card">
+        <div class="metric-num">82%</div>
+        <div class="metric-label">Multi-Platform Storage</div>
+        <div class="metric-sub">Store critical files across 3+ unlinked cloud services.</div>
+      </div>
+
+      <div class="card sage metric-card">
+        <div class="metric-num">78%</div>
+        <div class="metric-label">Unaware of Concept</div>
+        <div class="metric-sub">Had never encountered the term 'digital legacy' prior to survey.</div>
+      </div>
+
+      <div class="card dark metric-card">
+        <div class="metric-num">71%</div>
+        <div class="metric-label">Privacy as Barrier</div>
+        <div class="metric-sub">Cite disclosure of private chats as their #1 barrier to naming a custodian.</div>
+      </div>
+
+      <div class="card slate metric-card">
+        <div class="metric-num">70%</div>
+        <div class="metric-label">Retrieval Friction</div>
+        <div class="metric-sub">Experience significant difficulty locating specific files from 3+ years ago.</div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

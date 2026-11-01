@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1920px;
+    height: 1080px;
+    background-color: #F8F9FA;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 70px 115px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .tag-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pill {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #6B7280;
+    text-transform: uppercase;
+  }
+  .arrow-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #6B7280;
+  }
+  .meta-right {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #6B7280;
+    text-transform: uppercase;
+  }
+  .title-area {
+    margin-bottom: 40px;
+  }
+  .main-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .main-subtitle {
+    font-size: 17px;
+    color: #6B7280;
+    line-height: 1.4;
+    max-width: 1400px;
+  }
+  
+  /* Cards */
+  .card {
+    border-radius: 20px;
+    padding: 32px 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  }
+  .card.dark {
+    background: #181818;
+    border: 1px solid #2E2E2E;
+    color: #FFFFFF;
+  }
+  .card.sage {
+    background: #E2EAE5;
+    border: 1px solid #CDDAD2;
+    color: #111827;
+  }
+  .card.slate {
+    background: #EEF0F2;
+    border: 1px solid #DCE0E4;
+    color: #111827;
+  }
+  .card.white {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    color: #111827;
+  }
+  .card-badge {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+  .card-title {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    line-height: 1.25;
+  }
+  .card-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .card-list li {
+    font-size: 14.5px;
+    line-height: 1.45;
+    position: relative;
+    padding-left: 18px;
+  }
+  .card-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    opacity: 0.6;
+  }
+  .lead-bold {
+    font-weight: 700;
+  }
+
+  /* Layouts */
+  .layout-cover {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.05fr;
+    gap: 24px;
+    height: 520px;
+  }
+  .layout-col3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.05fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-col2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    height: 680px;
+  }
+  .layout-grid4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-grid4_vert {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    height: 680px;
+  }
+  .layout-credits {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.9fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.05fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-dashboard .hero-card {
+    grid-row: span 2;
+  }
+  .layout-dashboard .audit-card {
+    grid-row: span 2;
+  }
+
+  /* Metrics Layout */
+  .metrics-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 680px;
+  }
+  .metrics-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    height: 260px;
+  }
+  .metrics-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    height: 390px;
+  }
+  .metric-card {
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .metric-num {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .metric-label {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .metric-sub {
+    font-size: 13.5px;
+    line-height: 1.4;
+    opacity: 0.8;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="tag-group">
+      <div class="pill">WELCOME • FINAL CASE STUDY</div>
+      <div class="arrow-circle">↘</div>
+    </div>
+    <div class="meta-right">UEDP-5 • SEMESTER 7 • PROF. KRITI KUSUM</div>
+  </div>
+
+  <div style="margin-top: 40px; margin-bottom: 50px;">
+    <h1 style="font-size: 64px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px; color: #111827;">DIGITAL CONTINUITY HUB</h1>
+    <p style="font-size: 22px; color: #6B7280; max-width: 1400px; line-height: 1.4;">A Centralised Experience for Understanding Digital Footprints, Organising Personal Information, and Governing Selective Custodian Delegation.</p>
+  </div>
+  <div class="layout-cover">
+    <div class="card dark ">
+      <div class="card-badge">STUDENT & PROJECT METADATA</div>
+      <div class="card-title">Candidate Dossier</div>
+      <ul class="card-list">
+        <li><span class="lead-bold">Student:</span> Vidhi Ambade</li>
+        <li><span class="lead-bold">Programme:</span> B.Des User Experience Design (Sem 7)</li>
+        <li><span class="lead-bold">Course:</span> User Experience Design Project 5 (UEDP-5)</li>
+        <li><span class="lead-bold">Faculty Lead:</span> Prof. Kriti Kusum</li>
+        <li><span class="lead-bold">Assessment:</span> 45 Marks — UX Solution & Exhibition</li>
+      </ul>
+    </div>
+    <div class="card sage ">
+      <div class="card-badge">CORE PROBLEM SPACE</div>
+      <div class="card-title">Design Inquiry</div>
+      <ul class="card-list">
+        <li><span class="lead-bold">Focus Domain:</span> Digital Legacy, Continuity & Data Privacy</li>
+        <li><span class="lead-bold">Core Premise:</span> Fragmented lives across isolated cloud platforms</li>
+        <li><span class="lead-bold">Key Challenge:</span> Access is not binary; users reject 'share-all'</li>
+        <li><span class="lead-bold">Proposed Direction:</span> Centralised dashboard with granular boundaries</li>
+        <li><span class="lead-bold">Interaction Model:</span> Least-privilege selective custodian access</li>
+      </ul>
+    </div>
+    <div class="card slate ">
+      <div class="card-badge">ACADEMIC EVALUATION</div>
+      <div class="card-title">Deliverables Schedule</div>
+      <ul class="card-list">
+        <li><span class="lead-bold">Case Study Deck:</span> 19-Slide Research-to-Validation Journey</li>
+        <li><span class="lead-bold">Prototype:</span> Figma Interactive Flow (34 Core States)</li>
+        <li><span class="lead-bold">Exhibition Panel:</span> Large-Format A1 Summary Board</li>
+        <li><span class="lead-bold">Submission Date:</span> October 30, 2026 (Moodle)</li>
+        <li><span class="lead-bold">Exhibition Jury:</span> November 04, 2026 (Exhibition Display)</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

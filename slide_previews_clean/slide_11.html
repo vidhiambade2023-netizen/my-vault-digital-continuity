@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1920px;
+    height: 1080px;
+    background: #FFFFFF;
+    color: #111827;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    padding: 60px 115px;
+    position: relative;
+    overflow: hidden;
+  }
+  .top-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 50px;
+  }
+  .bot-meta {
+    position: absolute;
+    bottom: 50px;
+    left: 115px;
+    right: 115px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #6B7280;
+    padding-top: 16px;
+    border-top: 1px solid #E5E7EB;
+  }
+  .headline {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.22;
+    letter-spacing: -0.025em;
+    margin-bottom: 44px;
+    max-width: 1500px;
+  }
+  .card {
+    background: #FAFAFA;
+    border: 1px solid #EAEAEA;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card.dark {
+    background: #0D0D0D;
+    border: 1px solid #262626;
+    color: #FFFFFF;
+  }
+  .card-sub {
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6B7280;
+    margin-bottom: 8px;
+  }
+  .card.dark .card-sub {
+    color: #888888;
+  }
+  .card-title {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.25;
+  }
+  .card-text {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: #6B7280;
+    margin-bottom: 16px;
+  }
+  .card.dark .card-text {
+    color: #A0A0A0;
+  }
+  .card-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .card-list li {
+    font-size: 14.5px;
+    line-height: 1.45;
+    position: relative;
+    padding-left: 18px;
+  }
+  .card-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #6B7280;
+  }
+  .grid-2x2 {
+    background: #0D0D0D;
+    border: 1px solid #262626;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 520px;
+    position: relative;
+  }
+  .grid-cell {
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+  }
+  .grid-cell:nth-child(1) { border-right: 1px solid #262626; border-bottom: 1px solid #262626; }
+  .grid-cell:nth-child(2) { border-bottom: 1px solid #262626; }
+  .grid-cell:nth-child(3) { border-right: 1px solid #262626; }
+  .grid-num {
+    font-size: 56px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .grid-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+  .grid-sub {
+    font-size: 12.5px;
+    color: #888888;
+    line-height: 1.35;
+  }
+</style>
+</head>
+<body>
+  <div class="top-meta">
+    <div>The Digital Continuity Hub &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 06 Experience Structure</div>
+    <div>11</div>
+  </div>
+
+  <div class="headline">System Information Architecture</div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; height: 500px;">
+        <div class="card">
+      <div class="card-sub">SYSTEM TOPOLOGY</div>
+      <div class="card-title">Core Architecture Modules</div>
+      <ul class="card-list">
+        <li>1. Overview & Health: Readiness score, service status, security alerts</li>
+        <li>2. Connected Services: Google Drive, Apple iCloud, OneDrive, Subscriptions</li>
+        <li>3. Content Categories: Family Memories, Official Documents, Financial Portals</li>
+        <li>4. Trusted Circle: Nominated custodians, contact verification, role assignment</li>
+        <li>5. Permission Matrix: Category-to-person access scopes and lock rules</li>
+        <li>6. Trigger Engine: Inactivity countdowns and dual-verification gates</li>
+        <li>7. Security & 2FA: Biometric passkeys and immutable cryptographic audit log</li>
+      </ul>
+    </div>
+
+        <div class="card">
+      <div class="card-sub">DESIGN LOGIC</div>
+      <div class="card-title">Architecture Rationale</div>
+      <div class="card-text">The IA separates account connection from custodian access to eliminate privacy anxiety.</div>
+      <ul class="card-list">
+        <li>High visual hierarchy prioritizes unconfigured services</li>
+        <li>Category separation prevents accidental blanket access</li>
+        <li>Dedicated audit trail provides continuous reassurance</li>
+        <li>Calm navigation structure minimizes cognitive fatigue</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="bot-meta">
+    <div>Vidhi Ambade • Semester 7 • B.Des User Experience Design</div>
+    <div>UEDP-5 • Faculty Lead: Prof. Kriti Kusum • 45 Marks</div>
+  </div>
+</body>
+</html>

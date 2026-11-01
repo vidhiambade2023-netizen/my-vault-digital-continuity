@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1920px;
+    height: 1080px;
+    background: #FFFFFF;
+    color: #111827;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    padding: 60px 115px;
+    position: relative;
+    overflow: hidden;
+  }
+  .top-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #E5E7EB;
+    margin-bottom: 50px;
+  }
+  .bot-meta {
+    position: absolute;
+    bottom: 50px;
+    left: 115px;
+    right: 115px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #6B7280;
+    padding-top: 16px;
+    border-top: 1px solid #E5E7EB;
+  }
+  .headline {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.22;
+    letter-spacing: -0.025em;
+    margin-bottom: 44px;
+    max-width: 1500px;
+  }
+  .card {
+    background: #FAFAFA;
+    border: 1px solid #EAEAEA;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card.dark {
+    background: #0D0D0D;
+    border: 1px solid #262626;
+    color: #FFFFFF;
+  }
+  .card-sub {
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6B7280;
+    margin-bottom: 8px;
+  }
+  .card.dark .card-sub {
+    color: #888888;
+  }
+  .card-title {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.25;
+  }
+  .card-text {
+    font-size: 14.5px;
+    line-height: 1.5;
+    color: #6B7280;
+    margin-bottom: 16px;
+  }
+  .card.dark .card-text {
+    color: #A0A0A0;
+  }
+  .card-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .card-list li {
+    font-size: 14.5px;
+    line-height: 1.45;
+    position: relative;
+    padding-left: 18px;
+  }
+  .card-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #6B7280;
+  }
+  .grid-2x2 {
+    background: #0D0D0D;
+    border: 1px solid #262626;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 520px;
+    position: relative;
+  }
+  .grid-cell {
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+  }
+  .grid-cell:nth-child(1) { border-right: 1px solid #262626; border-bottom: 1px solid #262626; }
+  .grid-cell:nth-child(2) { border-bottom: 1px solid #262626; }
+  .grid-cell:nth-child(3) { border-right: 1px solid #262626; }
+  .grid-num {
+    font-size: 56px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .grid-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+  }
+  .grid-sub {
+    font-size: 12.5px;
+    color: #888888;
+    line-height: 1.35;
+  }
+</style>
+</head>
+<body>
+  <div class="top-meta">
+    <div>The Digital Continuity Hub &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 10 Design System</div>
+    <div>16</div>
+  </div>
+
+  <div class="headline">Visual Identity Tokens & Swiss Typography</div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; height: 520px;">
+    <div class="card">
+      <div class="card-sub">SURFACE TOKENS</div>
+      <div class="card-title">Color Palette</div>
+      <ul class="card-list">
+        <li>Obsidian #0D0D0D: Contrast & focus</li>
+        <li>Canvas #FFFFFF: Airy readability</li>
+        <li>Slate Mist #EEF0F2: Subtle structure</li>
+        <li>Emerald #10B981: Active status</li>
+        <li>Crimson #EF4444: Boundary lock</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-sub">NEO-GROTESQUE SCALE</div>
+      <div class="card-title">Typography</div>
+      <ul class="card-list">
+        <li>Display (44pt Bold): Impact titles</li>
+        <li>Section Head (24pt): Signposts</li>
+        <li>Card Header (14pt Bold): Anchors</li>
+        <li>Body (10pt Regular): 1.4 line-height</li>
+        <li>Running Meta (8.5pt): Uppercase</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-sub">LAYOUT LOGIC</div>
+      <div class="card-title">Grid & Hairlines</div>
+      <ul class="card-list">
+        <li>8pt Baseline Grid alignment</li>
+        <li>Hairline 0.5pt divider rules</li>
+        <li>Rectangular containers with sharp edges</li>
+        <li>Generous negative space throughout</li>
+      </ul>
+    </div>
+    <div class="card dark">
+      <div class="card-sub">ETHICAL STANDARDS</div>
+      <div class="card-title">Calm Tone</div>
+      <ul class="card-list">
+        <li>WCAG AAA Contrast compliance</li>
+        <li>Zero macabre death metaphors</li>
+        <li>Reassuring, dignified microcopy</li>
+        <li>No dark patterns or forced signups</li>
+      </ul>
+    </div>
+  </div>
+  <div class="bot-meta">
+    <div>Vidhi Ambade • Semester 7 • B.Des User Experience Design</div>
+    <div>UEDP-5 • Faculty Lead: Prof. Kriti Kusum • 45 Marks</div>
+  </div>
+</body>
+</html>

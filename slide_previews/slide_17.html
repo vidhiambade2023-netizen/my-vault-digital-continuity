@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1920px;
+    height: 1080px;
+    background-color: #F8F9FA;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 70px 115px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .tag-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pill {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #6B7280;
+    text-transform: uppercase;
+  }
+  .arrow-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #6B7280;
+  }
+  .meta-right {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #6B7280;
+    text-transform: uppercase;
+  }
+  .title-area {
+    margin-bottom: 40px;
+  }
+  .main-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .main-subtitle {
+    font-size: 17px;
+    color: #6B7280;
+    line-height: 1.4;
+    max-width: 1400px;
+  }
+  
+  /* Cards */
+  .card {
+    border-radius: 20px;
+    padding: 32px 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  }
+  .card.dark {
+    background: #181818;
+    border: 1px solid #2E2E2E;
+    color: #FFFFFF;
+  }
+  .card.sage {
+    background: #E2EAE5;
+    border: 1px solid #CDDAD2;
+    color: #111827;
+  }
+  .card.slate {
+    background: #EEF0F2;
+    border: 1px solid #DCE0E4;
+    color: #111827;
+  }
+  .card.white {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    color: #111827;
+  }
+  .card-badge {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+  .card-title {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    line-height: 1.25;
+  }
+  .card-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .card-list li {
+    font-size: 14.5px;
+    line-height: 1.45;
+    position: relative;
+    padding-left: 18px;
+  }
+  .card-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    opacity: 0.6;
+  }
+  .lead-bold {
+    font-weight: 700;
+  }
+
+  /* Layouts */
+  .layout-cover {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.05fr;
+    gap: 24px;
+    height: 520px;
+  }
+  .layout-col3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.05fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-col2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    height: 680px;
+  }
+  .layout-grid4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-grid4_vert {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    height: 680px;
+  }
+  .layout-credits {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.9fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.05fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-dashboard .hero-card {
+    grid-row: span 2;
+  }
+  .layout-dashboard .audit-card {
+    grid-row: span 2;
+  }
+
+  /* Metrics Layout */
+  .metrics-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 680px;
+  }
+  .metrics-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    height: 260px;
+  }
+  .metrics-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    height: 390px;
+  }
+  .metric-card {
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .metric-num {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .metric-label {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .metric-sub {
+    font-size: 13.5px;
+    line-height: 1.4;
+    opacity: 0.8;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="tag-group">
+      <div class="pill">13 • FINAL OUTCOME</div>
+      <div class="arrow-circle">↘</div>
+    </div>
+    <div class="meta-right">UEDP-5 • SEMESTER 7 • PROF. KRITI KUSUM</div>
+  </div>
+
+  <div class="title-area">
+    <div class="main-title">Delivered Design Artefacts & Prototype Fidelity Scope</div>
+    <div class="main-subtitle">Transparent accounting of resolved interface flows, demonstrated prototype capabilities, and boundaries.</div>
+  </div>
+  <div class="layout-col3">
+    <div class="card dark ">
+      <div class="card-badge">DELIVERABLES SUMMARY</div>
+      <div class="card-title">Delivered Course Artefacts</div>
+      <ul class="card-list">
+        <li><span class="lead-bold">UX Case Study Deck:</span> 19-Slide research-to-validation deck following faculty brief.</li>
+        <li><span class="lead-bold">Interactive Prototype:</span> Figma prototype with 34 documented interaction states.</li>
+        <li><span class="lead-bold">Design System Token Library:</span> Complete typography, bento grid, color tokens, and components.</li>
+        <li><span class="lead-bold">A1 Exhibition Display Panel:</span> High-resolution print-ready exhibition poster.</li>
+      </ul>
+    </div>
+    <div class="card sage ">
+      <div class="card-badge">FUNCTIONAL CAPABILITIES</div>
+      <div class="card-title">Demonstrated Prototype Scope</div>
+      <ul class="card-list">
+        <li><span class="lead-bold">Dynamic Readiness Meter:</span> Interactive score recalibration as services are configured.</li>
+        <li><span class="lead-bold">Granular Connection Flow:</span> Step-by-step OAuth simulation with scope disclosures.</li>
+        <li><span class="lead-bold">Category Permission Engine:</span> Toggleable category permissions with instant feedback.</li>
+        <li><span class="lead-bold">Custodian Nomination Flow:</span> Contact assignment, trigger setting, and revocation.</li>
+      </ul>
+    </div>
+    <div class="card slate ">
+      <div class="card-badge">TECHNICAL DEMARCATION</div>
+      <div class="card-title">Deliberate Concept Boundaries</div>
+      <ul class="card-list">
+        <li><span class="lead-bold">Simulated Live APIs:</span> Live OAuth endpoints to external servers are simulated for prototype stability.</li>
+        <li><span class="lead-bold">Zero Server Storage:</span> Backend cryptographic architecture modeled as service blueprint specification.</li>
+        <li><span class="lead-bold">Legal Verification:</span> Document verification treated as a human-in-the-loop manual service flow.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

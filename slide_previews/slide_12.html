@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1920px;
+    height: 1080px;
+    background-color: #F8F9FA;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 70px 115px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .tag-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pill {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #6B7280;
+    text-transform: uppercase;
+  }
+  .arrow-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #6B7280;
+  }
+  .meta-right {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #6B7280;
+    text-transform: uppercase;
+  }
+  .title-area {
+    margin-bottom: 40px;
+  }
+  .main-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .main-subtitle {
+    font-size: 17px;
+    color: #6B7280;
+    line-height: 1.4;
+    max-width: 1400px;
+  }
+  
+  /* Cards */
+  .card {
+    border-radius: 20px;
+    padding: 32px 30px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  }
+  .card.dark {
+    background: #181818;
+    border: 1px solid #2E2E2E;
+    color: #FFFFFF;
+  }
+  .card.sage {
+    background: #E2EAE5;
+    border: 1px solid #CDDAD2;
+    color: #111827;
+  }
+  .card.slate {
+    background: #EEF0F2;
+    border: 1px solid #DCE0E4;
+    color: #111827;
+  }
+  .card.white {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    color: #111827;
+  }
+  .card-badge {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+  .card-title {
+    font-size: 21px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    line-height: 1.25;
+  }
+  .card-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .card-list li {
+    font-size: 14.5px;
+    line-height: 1.45;
+    position: relative;
+    padding-left: 18px;
+  }
+  .card-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    opacity: 0.6;
+  }
+  .lead-bold {
+    font-weight: 700;
+  }
+
+  /* Layouts */
+  .layout-cover {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.05fr;
+    gap: 24px;
+    height: 520px;
+  }
+  .layout-col3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.05fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-col2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    height: 680px;
+  }
+  .layout-grid4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-grid4_vert {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    height: 680px;
+  }
+  .layout-credits {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 0.9fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.05fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    height: 680px;
+  }
+  .layout-dashboard .hero-card {
+    grid-row: span 2;
+  }
+  .layout-dashboard .audit-card {
+    grid-row: span 2;
+  }
+
+  /* Metrics Layout */
+  .metrics-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 680px;
+  }
+  .metrics-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    height: 260px;
+  }
+  .metrics-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    height: 390px;
+  }
+  .metric-card {
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .metric-num {
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .metric-label {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .metric-sub {
+    font-size: 13.5px;
+    line-height: 1.4;
+    opacity: 0.8;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="tag-group">
+      <div class="pill">11 • FINAL SOLUTION</div>
+      <div class="arrow-circle">↘</div>
+    </div>
+    <div class="meta-right">UEDP-5 • SEMESTER 7 • PROF. KRITI KUSUM</div>
+  </div>
+
+  <div class="title-area">
+    <div class="main-title">Screen 01 — Centralised Continuity Dashboard</div>
+    <div class="main-subtitle">High-fidelity home interface offering instant footprint awareness, readiness scoring, and quick actions.</div>
+  </div>
+  <div class="layout-dashboard">
+    <div class="card dark hero-card">
+      <div class="card-badge">SYSTEM HEALTH METER</div>
+      <div class="card-title">Continuity Readiness: 68%</div>
+      <ul class="card-list">
+        <li><span class="lead-bold">Readiness Status:</span> Good Foundation • 2 Actions Required</li>
+        <li><span class="lead-bold">Connected Accounts:</span> 3 of 5 active cloud platforms synced</li>
+        <li><span class="lead-bold">Trusted Circle:</span> 2 verified custodians assigned</li>
+        <li><span class="lead-bold">Unassigned Assets:</span> Microsoft 365 requires category scoping</li>
+        <li><span class="lead-bold">Security Audit:</span> Two-factor authentication verified active</li>
+        <li><span class="lead-bold">Quick Action:</span> → Complete Google Photos Scoping</li>
+      </ul>
+    </div>
+    <div class="card sage ">
+      <div class="card-badge">INTEGRATED ECOSYSTEM</div>
+      <div class="card-title">Connected Platforms (3 Active)</div>
+      <ul class="card-list">
+        <li><span class="lead-bold">Google Cloud (Drive/Photos):</span> Active • Scoped: Family Memories Only</li>
+        <li><span class="lead-bold">Apple iCloud (Docs/Vault):</span> Active • Scoped: Scanned Certificates</li>
+        <li><span class="lead-bold">Microsoft 365 (Work/Study):</span> Pending Configuration (Unscoped)</li>
+      </ul>
+    </div>
+    <div class="card white audit-card">
+      <div class="card-badge">IMMUTABLE ACTIVITY LOG</div>
+      <div class="card-title">Continuous Audit Log</div>
+      <ul class="card-list">
+        <li><span class="lead-bold">Oct 24, 2026 • 14:</span>20: Scoped permission granted to Riya Ambade for Family Photos.</li>
+        <li><span class="lead-bold">Oct 20, 2026 • 09:</span>15: Biometric 2FA re-authenticated on primary device.</li>
+        <li><span class="lead-bold">Oct 12, 2026 • 18:</span>30: WhatsApp backups marked Permanently Private & Locked.</li>
+        <li><span class="lead-bold">Sep 28, 2026 • 11:</span>00: Google Account connected via scoped OAuth token.</li>
+        <li><span class="lead-bold">Privacy Guarantee:</span> Every event is cryptographically timestamped and revocable.</li>
+      </ul>
+    </div>
+    <div class="card slate ">
+      <div class="card-badge">CUSTODIAN ROSTER</div>
+      <div class="card-title">Trusted Circle (2 Nominated)</div>
+      <ul class="card-list">
+        <li><span class="lead-bold">Riya Ambade (Sister):</span> Verified • Scoped: Family Photos & Memories</li>
+        <li><span class="lead-bold">Arjun Mehta (Partner):</span> Verified • Scoped: Legal & Official Records</li>
+        <li><span class="lead-bold">Access State:</span> Standby Mode (Zero active data access currently)</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
